@@ -699,7 +699,7 @@ struct cpu_power_info {
 #define CL1_MIN_VOLT		500000
 #define CL_MAX_VOLT(cl)		(cl == CL_ZERO ? CL0_MAX_VOLT : CL1_MAX_VOLT)
 #define CL_MIN_VOLT(cl)		(cl == CL_ZERO ? CL0_MIN_VOLT : CL1_MIN_VOLT)
-#define CL_VOLT_STEP		25000
+#define CL_VOLT_STEP		6250
 #else
 #error "Please define core voltage ranges for current SoC."
 #endif
@@ -931,7 +931,10 @@ static ssize_t store_cpufreq_min_limit(struct kobject *kobj, struct attribute *a
 		}
 #endif
 		cluster1_input = min(cluster1_input, (int)freq_max[CL_ONE]);
-		if (exynos_info[CL_ZERO]->boost_freq)
+		if (
+			
+			
+			_info[CL_ZERO]->boost_freq)
 			cluster0_input = exynos_info[CL_ZERO]->boost_freq;
 		else
 			cluster0_input = core_max_qos_const[CL_ZERO].default_value;
